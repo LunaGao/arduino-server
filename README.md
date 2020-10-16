@@ -1,6 +1,7 @@
 # arduino-server
 
-## 激活虚拟环境
+## 依赖
+* python3
 * `pip3 install Flask`
 * `pip3 install Flask-PyMongo`
 * `pip3 install dnspython` 如果mongodb使用了`mongodb+srv://`，则需要安装此插件
@@ -8,7 +9,6 @@
 ## 开发时可以使用虚拟环境
 * 创建虚拟环境 `python3 -m venv venv`
 * 使用虚拟环境 `. venv/bin/activate`
-
 
 ## 运行
 复制`application.config.json.EXAMPLE`文件为`application.config.json`，修改其中内容。
