@@ -24,3 +24,8 @@ $ flask run
 ### Gunicorn
 * `pip3 install gunicorn` 安装
 * `gunicorn "flaskr:create_app()" -b 127.0.0.1:5000 -D` （`-D`, 后台运行)
+
+## 访问地址
+http://localhost:5000/hello    测试页
+http://localhost:5000/list   列表页
+http://localhost:5000/xiaomi    增加数据页
