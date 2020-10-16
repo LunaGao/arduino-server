@@ -1,0 +1,9 @@
+<!doctype html>
+<title>Xiaomi List</title>
+<ul>
+  {% for event in events %}
+  <li>
+        <p>{{event.formatTime}}</p>
+  </li>
+  {% endfor %}
+</ul>

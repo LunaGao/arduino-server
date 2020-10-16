@@ -1,0 +1,7 @@
+{
+    "FLASK_APP": "flaskr",
+    "FLASK_ENV": "development",
+    "DEBUG": "True",
+    "SECRET_KEY": "DEV",
+    "MONGO_URI": "mongodb+srv://XXX"
+}

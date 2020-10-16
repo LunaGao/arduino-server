@@ -1,15 +1,15 @@
 import os
 
-from flask import Flask
+import time
+from flask import Flask, render_template
+from flask_pymongo import PyMongo
 
 
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
-    app.config.from_mapping(
-        SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
-    )
+    app.config.from_json('../application.config.json')
+    mongo = PyMongo(app)
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
@@ -27,6 +27,20 @@ def create_app(test_config=None):
     # a simple page that says hello
     @app.route('/hello')
     def hello():
-        return 'Hello, World!'
+        user = mongo.db.user.find_one_or_404({'userName': 'maomishen'})
+        print(user)	
+        return str(user)
+
+    @app.route('/xiaomi')
+    def xiaomi():
+        stime = time.time()
+        ftime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+        mongo.db.xiaomi.insert({'time': stime, 'formatTime': ftime})
+        return "success"
+
+    @app.route('/list')
+    def list():
+        events = mongo.db.xiaomi.find({})
+        return render_template('list.html',events=events)
 
     return app
